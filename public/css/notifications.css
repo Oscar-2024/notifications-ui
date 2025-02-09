@@ -1,0 +1,175 @@
+/* Base de notificación */
+.notification {
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    opacity: 0;
+    transform: translateY(-10px);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+/* Notificación centralizada (no full) */
+.notification:not(.full-top):not(.full-bottom) {
+    position: fixed;
+    max-width: 300px;
+    z-index: 1001;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 10px;
+}
+
+/* Notificación en pantalla completa (full) */
+.notification.full-top,
+.notification.full-bottom {
+    position: sticky;
+    width: 100%;
+    border-radius: 0;
+    padding: 15px 25px;
+    display: flex;
+    gap: 15px;
+    align-items: center;
+}
+
+/* Margen superior contador (no full) */
+.notification:not(.full-top):not(.full-bottom) .notification-countdown {
+    margin-top: 20px !important;
+}
+
+.notification.full-top {
+    top: 0;
+    left: 0;
+    right: 0;
+}
+
+.notification.full-bottom {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+
+/* Animación de aparición y desaparición */
+.notification.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.notification.hide {
+    display: none !important;
+}
+
+/* Posiciones de notificación */
+.notification.top-right { top: 20px; right: 20px; }
+.notification.top-left { top: 20px; left: 20px; }
+.notification.top-center { top: 20px; left: 50%; transform: translateX(-50%); }
+.notification.bottom-right { bottom: 20px; right: 20px; }
+.notification.bottom-left { bottom: 20px; left: 20px; }
+.notification.bottom-center { bottom: 20px; left: 50%; transform: translateX(-50%); }
+.notification.center { top: 50%; left: 50%; transform: translate(-50%, -50%); }
+.notification.right-center { top: 50%; right: 20px; transform: translateY(-50%); }
+.notification.left-center { top: 50%; left: 20px; transform: translateY(-50%); }
+
+/* Variantes de notificación por tipo */
+.notification.success { background-color: #28a745 !important; color: #fff !important; }
+.notification.info { background-color: #17a2b8 !important; color: #fff !important; }
+.notification.warning { background-color: #ffc107 !important; color: #212529 !important; }
+.notification.error { background-color: #dc3545 !important; color: #fff !important; }
+
+/* Elementos internos */
+.notification h4 {
+    margin: 0;
+    font-size: 1.25rem;
+    font-weight: 600;
+}
+
+.notification p {
+    margin: 0;
+    font-size: 1rem;
+}
+
+.notification-image {
+    width: 100%;
+    height: auto;
+    border-radius: 4px;
+}
+
+.notification.full-top .notification-image,
+.notification.full-bottom .notification-image {
+    height: 60px;
+    width: 60px;
+}
+
+/* Botón de cierre */
+.notification-close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: transparent;
+    border: none;
+    font-size: 16px;
+    cursor: pointer;
+    color: #fff;
+}
+
+/* Contenedor y estilos del contador */
+.notification-countdown {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.countdown-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-width: 60px;
+    background-color: #333;
+    color: #fff;
+    border-radius: 8px;
+    padding: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.countdown-time {
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+.countdown-label {
+    font-size: 0.6rem;
+    text-transform: uppercase;
+    color: #ccc;
+}
+
+/* Botón de acción */
+.notification-action-container {
+    display: flex;
+    flex: 1;
+    width: 100%;
+    margin-left: auto;
+}
+
+.notification-action {
+    width: 100%;
+    padding: 8px 12px;
+    background-color: #fff;
+    color: #212529;
+    border-radius: 5px;
+    text-align: center;
+    box-sizing: border-box;
+    text-decoration: none;
+}
+
+.notification.full-top .notification-action,
+.notification.full-bottom .notification-action {
+    width: auto;
+    max-width: initial;
+    margin-left: auto;
+    margin-right: 10px;
+}
